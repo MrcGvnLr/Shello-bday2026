@@ -379,7 +379,20 @@
       <div id="dots"></div>
     </div>
   </div>
+  <audio id="bg-music" loop>
+    <source src="HBD.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
   <canvas id="fx-canvas"></canvas>
+  <!-- Music Toggle Button -->
+  <button id="music-toggle" aria-label="Toggle music">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13M9 9h13"></path>
+    </svg>
+    <div class="bar" style="left: 4px;"></div>
+    <div class="bar" style="left: 10px;"></div>
+    <div class="bar" style="left: 16px;"></div>
+  </button>
 <script>
 (function(){
   "use strict";
@@ -847,6 +860,37 @@
     }
     c.closePath();
     c.fill();
+  }
+
+  /* Music Toggle Control */
+  var bgMusic = document.getElementById('bg-music');
+  var musicToggle = document.getElementById('music-toggle');
+  var isMuted = false;
+
+  if (musicToggle && bgMusic) {
+    // Auto-play music on first interaction
+    function playMusic() {
+      bgMusic.play().catch(function(err) {
+        console.log('Autoplay prevented:', err);
+      });
+      document.removeEventListener('click', playMusic);
+      document.removeEventListener('touchstart', playMusic);
+    }
+    
+    document.addEventListener('click', playMusic);
+    document.addEventListener('touchstart', playMusic);
+
+    // Toggle music on button click
+    musicToggle.addEventListener('click', function() {
+      isMuted = !isMuted;
+      if (isMuted) {
+        bgMusic.pause();
+        musicToggle.classList.add('muted');
+      } else {
+        bgMusic.play();
+        musicToggle.classList.remove('muted');
+      }
+    });
   }
 })();
 </script>

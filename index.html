@@ -503,7 +503,7 @@
       '<div class="cake-wrap">' +
         cakeSVG() +
       '</div>' +
-      '<div class="cake-caption utility" id="cake-caption"> Blow me and make a wish (tap the flame)</div>' +
+      '<div class="cake-caption utility" id="cake-caption"> Make a wish and blow me (tap the flame)</div>' +
       '<div id="image-overlay"><img src="monkey.png" alt="Celebration"></div>' +
       '<div class="final-note" id="final-note">' +
         '<div class="script">Happy Birthday' + (RECIPIENT ? ', ' + RECIPIENT : '') + '</div>' +
@@ -693,7 +693,7 @@
       var overlay = document.getElementById('image-overlay');
       if (overlay) overlay.classList.remove('show');
       var cap = document.getElementById('cake-caption');
-      if (cap){ cap.style.opacity = '1'; cap.textContent = 'Blow me and make a wish \u2014 tap the flame'; }
+      if (cap){ cap.style.opacity = '1'; cap.textContent = 'Make a wish and blow me \u2014 tap the flame'; }
       var glowEl = document.getElementById('cake-glow');
       if (glowEl){ glowEl.style.opacity = '0.85'; glowEl.style.transform = 'scale(1)'; }
 
